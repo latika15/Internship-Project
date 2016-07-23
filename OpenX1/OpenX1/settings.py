@@ -107,17 +107,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'storage.db'),
     }
 }
-
-
 AUTHENTICATION_BACKENDS = ( 
-    
     'django.contrib.auth.backends.ModelBackend',
-    
 )
-
-FACEBOOK_APP_ID              = '475419799291244'
-FACEBOOK_API_SECRET          = 'a17eb65caf7d79881ddb925ee671a74c'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
