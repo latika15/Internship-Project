@@ -1,0 +1,38 @@
+{% extends 'index_cust.html'%}
+{%block content%}
+
+<div class="row-fluid">
+        <div class="span12">
+            <div class="tooltip-demo well">
+            <p>Title : <strong>{{ suggestion.suggestion_title }}</strong></p>
+            <p>Posted on: {{ suggestion.suggestion_date }}</p>
+            <p> Description : {{ suggestion.suggestion_description }}</p>
+            <div class="fb-like" data-href="/customer/suggestions/{{suggestion.id}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content%}
+
+{% block hotissues %}
+	{% for issue in hot_issues %}
+	    <p><a href="/customer/issue/{{ issue.id }}">{{ issue.issue_description }}  | {{ issue.issue_vote }} votes</a></p>
+	{% endfor %}
+{% endblock hotissues %}
+
+{% block suggestions %}
+				<div class="box span3">
+					<div class="box-header well" data-original-title>
+						<h2><span class="icon icon-darkgray icon-lightbulb"></span> Top Ideas</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					{% for suggestion in top_ideas %}
+						<p><a href="/customer/idea/{{ suggestion.id }}">{{ suggestion.suggestion_title }}  | {{ suggestion.suggestion_vote }} votes</a></p>
+					{% endfor %}
+					</div>
+				</div><!--/span-->
+				
+{% endblock suggestions %}

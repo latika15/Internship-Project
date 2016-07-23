@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- ADD your copy rights information here
+-->
+	<meta charset="utf-8">
+	<title>Open Lagos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Open Lagos, Communication medium between user and government.">
+	<meta name="author" content="IBM">
+
+	<!-- The styles -->
+	<link href="/static/css/bootstrap-cerulean.css" rel="stylesheet">
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	</style>
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/css/charisma-app.css" rel="stylesheet">
+	<link href="/static/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+	<link href='/static/css/fullcalendar.css' rel='stylesheet'>
+	<link href='/static/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
+	<link href='/static/css/chosen.css' rel='stylesheet'>
+	<link href='/static/css/uniform.default.css' rel='stylesheet'>
+	<link href='/static/css/colorbox.css' rel='stylesheet'>
+	<link href='/static/css/jquery.cleditor.css' rel='stylesheet'>
+	<link href='/static/css/jquery.noty.css' rel='stylesheet'>
+	<link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.min.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+	<link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+	<link href='/static/css/opa-icons.css' rel='stylesheet'>
+	<link href='/static/css/uploadify.css' rel='stylesheet'>
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- The fav icon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+
+</head>
+<body>
+
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12 center login-header">
+					<h2>Welcome to Open-Lagos</h2>
+					
+							<div>
+							{% block status_msg %}
+					
+							<p>&nbsp;</p>	
+							{% endblock status_msg %}	
+							</div>
+			
+				</div><!--/span-->
+			</div><!--/row-->
+					
+			
+			<div class="row-fluid">
+				<div class="well span5 center login-box">
+				{% block login %}
+					
+				{% endblock login %}
+				</div><!--/well-->
+			</div><!--/fluid-row-->
+
+	</div><!--/.fluid-container-->
+
+	<!-- external javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- jQuery -->
+	<script src="/static/js/jquery-1.7.2.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="/static/js/jquery-ui-1.8.21.custom.min.js"></script>
+	<!-- transition / effect library -->
+	<script src="/static/js/bootstrap-transition.js"></script>
+	<!-- alert enhancer library -->
+	<script src="/static/js/bootstrap-alert.js"></script>
+	<!-- modal / dialog library -->
+	<script src="/static/js/bootstrap-modal.js"></script>
+	<!-- custom dropdown library -->
+	<script src="/static/js/bootstrap-dropdown.js"></script>
+	<!-- scrolspy library -->
+	<script src="/static/js/bootstrap-scrollspy.js"></script>
+	<!-- library for creating tabs -->
+	<script src="/static/js/bootstrap-tab.js"></script>
+	<!-- library for advanced tooltip -->
+	<script src="/static/js/bootstrap-tooltip.js"></script>
+	<!-- popover effect library -->
+	<script src="/static/js/bootstrap-popover.js"></script>
+	<!-- button enhancer library -->
+	<script src="/static/js/bootstrap-button.js"></script>
+	<!-- accordion library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-collapse.js"></script>
+	<!-- carousel slideshow library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-carousel.js"></script>
+	<!-- autocomplete library -->
+	<script src="/static/js/bootstrap-typeahead.js"></script>
+	<!-- tour library -->
+	<script src="/static/js/bootstrap-tour.js"></script>
+	<!-- library for cookie management -->
+	<script src="/static/js/jquery.cookie.js"></script>
+	<!-- calander plugin -->
+	<script src='/static/js/fullcalendar.min.js'></script>
+	<!-- data table plugin -->
+	<script src='/static/js/jquery.dataTables.min.js'></script>
+
+	<!-- chart libraries start -->
+	<script src="/static/js/excanvas.js"></script>
+	<script src="/static/js/jquery.flot.min.js"></script>
+	<script src="/static/js/jquery.flot.pie.min.js"></script>
+	<script src="/static/js/jquery.flot.stack.js"></script>
+	<script src="/static/js/jquery.flot.resize.min.js"></script>
+	<!-- chart libraries end -->
+
+	<!-- select or dropdown enhancer -->
+	<script src="/static/js/jquery.chosen.min.js"></script>
+	<!-- checkbox, radio, and file input styler -->
+	<script src="/static/js/jquery.uniform.min.js"></script>
+	<!-- plugin for gallery image view -->
+	<script src="/static/js/jquery.colorbox.min.js"></script>
+	<!-- rich text editor library -->
+	<script src="/static/js/jquery.cleditor.min.js"></script>
+	<!-- notification plugin -->
+	<script src="/static/js/jquery.noty.js"></script>
+	<!-- file manager library -->
+	<script src="/static/js/jquery.elfinder.min.js"></script>
+	<!-- star rating plugin -->
+	<script src="/static/js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="/static/js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="/static/js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="/static/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	
+	<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '475419799291244',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+	
+</body>
+</html>

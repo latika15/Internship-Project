@@ -1,0 +1,132 @@
+{% extends 'index_cust.html' %}
+
+{% block script %}
+<script>
+var marker;
+function initialize() {
+  LocationBox.value = ""
+ var mapOptions = {
+   zoom: 13,
+   center: new google.maps.LatLng(6.4531,3.3958)
+ };
+ var map = new google.maps.Map(document.getElementById('map-canvas'),
+     mapOptions);
+ 
+ google.maps.event.addListener(map, 'click', function(e) {
+   placeMarker(e.latLng, map);
+ });
+var pos = "(6.460475363416374, 3.3641499280929565)";
+	    var len = pos.length;
+        var res = str.slice(1,len-1);
+        res = res.split(',');
+   
+	    var marker = new google.maps.Marker({
+	      position: {lat: res[0], lng: res[1]},
+	      map: map,
+	      title: "demo",
+	    });
+ //displayHotIssues(map);
+}
+
+/*function displayHotIssues(map){
+	//{% for issue in hot_issues %}
+	
+	    var pos = "(6.460475363416374, 3.3641499280929565)";
+	    len = pos.length;
+        var res = str.slice(1,len-1);
+        res = res.split(',');
+   
+	    var marker = new google.maps.Marker({
+	      position: {lat: res[0], lng: res[1]},
+	      map: map,
+	      title: "demo",
+	    });
+	  
+	  //{% endfor %}
+}*/
+
+function placeMarker(position, map) {
+ 
+ if(!marker){
+          marker = new google.maps.Marker({
+           position: position,
+          map: map,
+          draggable:true,
+          animation: google.maps.Animation.DROP,
+          
+     });
+  }
+ else
+     { marker.setPosition(position); 
+        
+    }
+ 
+ google.maps.event.addListener(marker, 'drag', function() {
+   LocationBox.value = marker.getPosition();
+ });
+LocationBox.value = marker.getPosition();
+ map.panTo(position);
+ map.setZoom(16);  
+ 
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+{% endblock script%}
+					
+{% block breadcrumb %}
+<a href="/customer/">Categories</a><span class="divider">/</span><a href="/customer/categories/{{subcategoryID}}">{{ subcategoryID}}</a>
+<span class="divider">/</span>
+<a href="#">Report an Issue</a>
+{% endblock breadcrumb %}
+
+{% block content %}
+			<div class="row-fluid">
+			<div class ="span4">
+				<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+					<p> <strong>Location:</strong> <input type="text" id="LocationBox" name="issue_location" default="" size ="50" readonly/></p>
+					{{form.as_p}}
+					<input type="submit" class="btn btn-primary" value = "Submit" />
+				</form> 
+				</div>
+				<div class="span8"> 
+					<div id="map-canvas" style="width:600px; height:500px; margin-left:0px;">
+					</div>			
+				</div>
+		</div>
+{% endblock content %}
+					
+
+
+{% block box1_title %}
+<h2><i class="icon-edit"></i> Report an Issue for {{ subcategoryID }}</h2>
+{% endblock box1_title %}
+
+{% block box2_title %}
+<h2><i class="icon-fire"></i>Hot Issues in {{ subcategoryID }}</h2>
+{% endblock box2_title %}
+
+
+{% block hotissues %}
+	{% for issue in hot_issues %}
+	    <p><a href="/customer/issue/{{ issue.id }}">{{ issue.issue_description }}  | {{ issue.issue_vote }} votes</a></p>
+	
+	{% endfor %}
+{% endblock hotissues %}
+
+{% block suggestions %}
+				<div class="box span3">
+					<div class="box-header well" data-original-title>
+						<h2><span class="icon icon-darkgray icon-lightbulb"></span> Top Ideas</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					{% for suggestion in top_ideas %}
+						<p><a href="/customer/idea/{{ suggestion.id }}">{{ suggestion.suggestion_title }}  | {{ suggestion.suggestion_vote }} votes</a></p>
+					{% endfor %}
+					</div>
+				</div><!--/span-->
+				
+{% endblock suggestions %}
+					

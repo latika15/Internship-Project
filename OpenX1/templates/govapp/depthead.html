@@ -1,0 +1,113 @@
+{% extends 'index_gov.html' %}
+
+{% block status_msg %}
+{% if messages %}
+		<div class="box-content alerts">
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{% for message in messages %}
+    			<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    			{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock status_msg %}
+
+
+{% block content%}
+<body>
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#unassigned_issues">Unassigned Issues</a></li>
+	<li><a href="#assigned_issues">Assigned Issues</a></li>
+</ul>
+	 
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active" id="unassigned_issues">
+			{% for issue in deptHead_table %}
+			{% if not issue.is_assigned %}
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="tooltip-demo well">
+							<div class="row-fluid">
+								<div class="span4">
+								<p> {{ issue.issue_date }} </p>
+								<p> {{ issue.issue_subcategory }} </p>
+								<p> {{ issue.issue_description }} </p>
+								</div>
+							<div class="span6">							
+								<form action="assign/{{ issue.issue_id }}/" method="POST" >{% csrf_token %}
+									<select name="govofficial"> 
+									{% for govofficial in govOfficials %}
+										<option value="{{ govofficial.username }}" id=""> {{ govofficial.username }} </option>
+									{% endfor %}
+									</select>
+									<input type="submit" class="btn btn-primary" value="Assign">
+								</form>
+							</div>						
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}								
+			{% endfor %}
+		</div>
+		<div class="tab-pane" id="assigned_issues">
+			{% for issue in deptHead_table %}
+			{% if issue.is_assigned %}
+				<div class="row-fluid">
+					<div class="span12">
+					<div class="tooltip-demo well">
+						<div class="row-fluid">
+							<div class="span4">
+								<p> {{ issue.issue_date }} </p>
+								<p> {{ issue.issue_subcategory }} </p>
+								<p> {{ issue.issue_description }} </p>
+							</div>
+							<div class="span6">					
+								<form action="assign/{{ issue.issue_id }}/" method="POST" >{% csrf_token %}
+									<select name="govofficial"> 
+									{% for govofficial in govOfficials %}
+										<option value="{{ govofficial.username }}" id=""> {{ govofficial.username }} </option>
+									{% endfor %}
+									</select>
+									<input type="submit" class="btn btn-primary" value="Reassign">
+								</form>
+							</div>							
+						</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+	</body>
+{%endblock%}
+
+{% block navcontent %}
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">Main</li>
+						<li><a class="ajax-link" href=""><i class="icon-home"></i><span class="hidden-tablet">Feed</span></a></li>
+						<li><a class="ajax-link" href=""><i class="icon-eye-open"></i><span class="hidden-tablet">Issues</span></a></li>
+						<li><a class="ajax-link" href=""><i class="icon-edit"></i><span class="hidden-tablet">Suggestions</span></a></li>
+						<li class="nav-header hidden-tablet">My Profile</li>
+						<li><a class="ajax-link" href="{% url 'add-official' %}"><i class="icon-plus"></i><span class="hidden-tablet"> Add official</span></a></li>
+						<li><a class="ajax-link" href=""><i class="icon-align-justify"></i><span class="hidden-tablet"> Assign Issues</span></a></li>
+						<li><a class="ajax-link" href="{%url 'dept-suggestions'%}"><span class="icon icon-darkgray icon-lightbulb"></span><span class="hidden-tablet"> Department Ideas</span></a></li>
+						<li><a class="ajax-link" href="{% url "password_change" %}"><i class="icon-wrench"></i><span class="hidden-tablet"> Change Password</span></a></li>
+					</ul>
+{% endblock navcontent %}
+
+{% block breadcrumb %}
+<a href="#">Assign Issues</a>
+{% endblock breadcrumb %}
+
+
+{% block box1_title %}
+<h2><i class="icon-bullhorn"></i>Assign Issues to officials</h2>
+{% endblock box1_title %}
+
+{% block box2_title %}
+<h2><i class="icon-fire"></i>Hot Issues in {{ subcategoryID }}</h2>
+{% endblock box2_title %}
+

@@ -1,0 +1,53 @@
+{% extends 'index_cust.html' %}
+
+{% block breadcrumb %}
+<a href="#">Suggest a Solution</a>
+{% endblock breadcrumb %}
+
+{% block box1_title %}
+<h2><span class="icon icon-darkgray icon-lightbulb"></span>Suggest an Idea {{ subcategoryID }}</h2>
+{% endblock box1_title %}
+
+{% block content %}
+		<div class="row-fluid">
+			<div class ="span4">
+				<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+				<p> <strong>Location:</strong> <input type="text" id="LocationBox" name="issue_location" default="" size ="50" readonly/></p>
+				{{form.as_p}}
+				<input type="submit" class="btn btn-primary" value = "Submit" />
+				</form> 
+			</div>
+			<div class="span8"> 
+					<div id="map-canvas" style="width:600px; height:500px; margin-left:0px;">
+					</div>			
+			</div>
+		</div>
+{% endblock content %}
+
+{% block box2_title %}
+<h2><span class="icon icon-darkgray icon-lightbulb"></span>Top Ideas</h2>
+{% endblock box2_title %}
+
+{% block suggestions %}
+<div class="box span3">
+					<div class="box-header well" data-original-title>
+						<h2><span class="icon icon-color icon-lightbulb"></span> Accepted Ideas</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					</div>
+				</div><!--/span-->
+{% endblock suggestions %}
+
+{% block status_msg %}
+	
+{% endblock status_msg %}
+
+
+{% block hotissues %}
+	{% for suggestion in top_ideas %}
+		<p><a href="/customer/idea/{{ suggestion.id }}">{{ suggestion.suggestion_title }}  | {{ suggestion.suggestion_vote }} votes</a></p>
+	{% endfor %}
+{% endblock hotissues %}

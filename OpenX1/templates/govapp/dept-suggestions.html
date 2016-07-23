@@ -1,0 +1,34 @@
+{% extends 'govapp/depthead.html' %}
+
+
+{% block box1_title%}
+
+{% endblock box1_title%}
+
+{% block content %}
+{% for suggestion in suggestions %}
+	<div class="tooltip-demo well">
+	<div class="row-fluid">
+		
+			<div class="span10">
+				
+				<p>Title : <strong>{{ suggestion.suggestion_title }}</strong></p>
+				<p>Posted on: {{ suggestion.suggestion_date }}</p>
+				<p> Description : {{ suggestion.suggestion_description }}</p>
+				<p> {{ suggestion.suggestion_vote }} votes</p>
+			</div>
+		
+			<div class="span2">
+				<form action="{%url 'accept-idea' suggestion.id %}" method="POST">{% csrf_token %}
+					{% if not suggestion.is_accepted %}
+					<input type="submit" class="btn btn-primary" value="Accept" > 
+				</form>
+					{% else %}
+					<input type="button" class="btn" value="Accepted" readonly>
+					{% endif %}
+				
+			</div>
+		</div>
+	</div>
+{% endfor %}
+{% endblock content %}

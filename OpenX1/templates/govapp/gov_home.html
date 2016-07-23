@@ -1,0 +1,99 @@
+{% extends 'index_gov.html' %}
+
+
+
+{% block breadcrumb %}
+<a href="/gov/"></a>
+{% endblock breadcrumb %}
+
+{% block status_msg %}
+	{% if messages %}
+		<div class="box-content alerts">
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{% for message in messages %}
+    			You have broadcasted :<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    			{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock status_msg %}
+
+{% block navcontent %}
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">Main</li>
+						<li><a class="ajax-link" href="/gov/"><i class="icon-home"></i><span class="hidden-tablet">Home</span></a></li>
+						<li><a class="ajax-link" href="/gov/feed/"><i class="icon-bullhorn"></i><span class="hidden-tablet">Feed</span></a></li>
+						<li><a class="ajax-link" href="/gov/resource-list/"><i class="icon-edit"></i><span class="hidden-tablet">Resource List</span></a></li>
+						<li><a class="ajax-link" href="/gov/add-head/"><i class="icon-edit"></i><span class="hidden-tablet">Add Dept. Head</span></a></li>
+						<li class="nav-header hidden-tablet">My Profile</li>
+						<li><a class="ajax-link" href=""><i class="icon-align-justify"></i><span class="hidden-tablet">View Issues</span></a></li>
+						<li><a class="ajax-link" href="{% url "password_change" %}"><i class="icon-wrench"></i><span class="hidden-tablet"> Change Password</span></a></li>
+					</ul>
+{% endblock navcontent %}
+
+{% block box1_title %}
+<h2><i class="icon-volume-up"></i> Broadcast </h2>
+{% endblock box1_title %}
+
+{% block content %}
+	<div class="tooltip-demo well">
+		<form action="/gov/broadcast/" method="POST">{% csrf_token %}
+			<input type="text" value="" id="BroadcastBox" name="broadcast_msg">
+			{{form.as_p}}
+			<input type="submit" class="btn btn-primary" value="broadcast">
+		</form>
+		<p>Current Broadcast message : {{ broadcast_msg }}</p>
+		
+	</div>
+					
+{% endblock content %}
+
+{% block extra %}
+<div class="sortable row-fluid">
+				<a data-rel="tooltip" title="This is user Id." class="well span3 top-block" href="#">
+					<span class="icon32 icon-color icon-folder-open"></span>
+					<div><h2>{{ total_issues_count }} </h2></div>
+					<div>Total Issues</div>
+					<span class="notification"></span>
+				</a>
+
+				<a data-rel="tooltip" title="4 new pro members." class="well span3 top-block" href="#">
+					<span class="icon32 icon-color icon-check"></span>
+					<div><h2> {{ resolved_issues }} </h2></div>
+					<div>Resolved Issues</div>
+					
+					<span class="notification green"></span>
+				</a>
+
+				<a data-rel="tooltip" title="$34 new sales." class="well span3 top-block" href="#">
+					<span class="icon32 icon-color icon-cross"></span>
+					<div><h2> {{ unresolved_issues }} </h2></div>
+					<div>Unresolved Issues</div>
+					
+					<span class="notification red"></span>
+				</a>
+				
+				<a data-rel="tooltip" title="12 new messages." class="well span3 top-block" href="#">
+					<span class="icon32 icon-color icon-lightbulb"></span>
+					<div><h2>25</h2></div>
+					<div>Accepted Ideas</div>
+					
+					<span class="notification yellow"></span>
+				</a>
+			</div>
+{% endblock extra %}
+
+
+
+{% block box2_title %}
+<h2><i class="icon-fire"></i>Hot Issues</h2>
+{% endblock box2_title %}
+{% block hotissues %}
+	{% for issue in hot_issues %}
+	    <p><a href="/customer/issue/{{ issue.id }}">{{ issue.issue_title }}  | {{ issue.issue_vote }} votes</a></p>
+	
+	{% endfor %}
+{% endblock hotissues %}
+

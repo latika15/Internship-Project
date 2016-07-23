@@ -1,0 +1,93 @@
+
+{% extends 'index_cust.html' %}
+
+{% block breadcrumb %}
+<a href="/customer/">Categories</a><span class="divider">/</span><a href="/customer/categories/{{subcategoryID}}">{{ subcategoryID}}</a>
+{% endblock breadcrumb %}
+
+{% block status_msg %}
+	{% if messages %}
+		<div class="box-content alerts">
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{% for message in messages %}
+    			<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    			{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock status_msg %}
+
+{% block content %}
+{% load staticfiles %}
+<div class="page-header">
+<h1><small> Click to post a </small><a href="report_issue/">New Issue</h1></a>
+</div> <br>
+	{% for issue in list_issues %}
+	<div class="tooltip-demo well">
+		<div class="row-fluid">			
+			<div class="span2">
+                {% if issue.issue_img %}
+					<a href="#" class="lightbox1" id="{{issue.id }}"><img class="issue_img"  id="img-{{issue.id }}" src = "/customer{{ issue.issue_img.url }}", height="120", width ="120", border="2" /></a>
+					<div class="backdrop1"></div>
+						<div class="box1">
+							<div class="close1">X</div>							
+								<img class="lightbox_img" src="">
+							</div>	
+					{% endif %}	
+            </div>
+            <div class="span6">											
+				<p>Posted on : {{issue.issue_date }}  </p>
+				<p><strong> {{issue.issue_subcategory }} </strong> : {{issue.issue_description }}</p>
+			</div>
+			<div class="span4">
+				<div class="fb-like" data-href="/customer/categories/{{issue.issue_subcategory}}/{{issue.id}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+				{% if issue not in list_following %}
+                    <p><a href="/customer/categories/{{issue.issue_subcategory}}/{{issue.id}}"><i class="icon-eye-close"></i><strong> Watch</strong></a> 
+                {% else %}    
+                    <p><a href="#"><i class="icon-eye-open"></i><strong> Watching</strong></a> 
+                {% endif %}    
+                
+                | {{ issue.issue_followers }} watching</p> 								
+			</div>
+		</div>	
+	</div>
+{% endfor %}	 			
+{% endblock %}
+
+{% block box2_title %}
+<h2><i class="icon-fire"></i>Hot Issues in {{ subcategoryID }}</h2>
+{% endblock box2_title %}
+
+{% block box1_title %}
+<h2><i class="icon-edit"></i>Issues in {{ subcategoryID }}</h2>
+{% endblock box1_title %}
+
+
+{% block hotissues %}
+	{% for issue in hot_issues %}
+	    <p><a href="/customer/issue/{{ issue.id }}">{{ issue.issue_description }}  | {{ issue.issue_vote }} votes</a></p>
+	
+	{% endfor %}
+{% endblock hotissues %}
+
+{% block suggestions %}
+				<div class="box span3">
+					<div class="box-header well" data-original-title>
+						<h2><span class="icon icon-darkgray icon-lightbulb"></span> Top Ideas</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					{% for suggestion in top_ideas %}
+						<p><a href="/customer/idea/{{ suggestion.id }}">{{ suggestion.suggestion_title }}  | {{ suggestion.suggestion_vote }} votes</a></p>
+					{% endfor %}
+					</div>
+				</div><!--/span-->
+				
+{% endblock suggestions %}          
+
+
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- ADD your copy rights information here
+-->
+	<meta charset="utf-8">
+	<title>Open Lagos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Open Lagos, Communication medium between user and government.">
+	<meta name="author" content="IBM">
+
+	<!-- The styles -->
+	<link href="/static/css/bootstrap-cerulean.css" rel="stylesheet">
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/css/charisma-app.css" rel="stylesheet">
+	<link href="/static/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+	<link href='/static/css/fullcalendar.css' rel='stylesheet'>
+	<link href='/static/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
+	<link href='/static/css/chosen.css' rel='stylesheet'>
+	<link href='/static/css/uniform.default.css' rel='stylesheet'>
+	<link href='/static/css/colorbox.css' rel='stylesheet'>
+	<link href='/static/css/jquery.cleditor.css' rel='stylesheet'>
+	<link href='/static/css/jquery.noty.css' rel='stylesheet'>
+	<link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.min.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+	<link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+	<link href='/static/css/opa-icons.css' rel='stylesheet'>
+	<link href='/static/css/uploadify.css' rel='stylesheet'>
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- The fav icon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+		{% block head %}
+		{% endblock head %}
+</head>
+
+<body>
+		<!-- topbar starts -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/home/"><span> Open Lagos</span></a>
+				
+				<!-- user dropdown starts -->
+				<div class="btn-group pull-right" >
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i><span class="hidden-phone">{{request.user.username}}</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/home/">Logout</a></li>
+					</ul>
+				</div>
+				<!-- user dropdown ends -->
+				
+				<div class="top-nav nav-collapse">
+					<ul class="nav">
+						<li><a href="#">Open Data</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li>
+							<form class="navbar-search pull-left">
+								<input placeholder="Search" class="search-query span2" name="query" type="text">
+							</form>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<!-- topbar ends -->
+		<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- left menu starts -->
+			<div class="span2 main-menu-span">
+				<div class="well nav-collapse sidebar-nav">
+				{% block navcontent %}
+				{% endblock navcontent %}
+				</div><!--/.well -->
+			</div><!--/span-->
+			<!-- left menu ends -->
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			
+			<div id="content" class="span10">
+			<!-- content starts -->
+			
+
+			<div>
+				<ul class="breadcrumb">
+					<li>
+						<a href="#">Home</a> <span class="divider">/</span>
+					</li>
+					<li>
+					{% block breadcrumb %}
+						<a href="#">Blank</a>
+					{% endblock breadcrumb %}
+					</li>
+				</ul>
+			</div>
+			
+			<div>
+					{% block status_msg %}
+			
+						
+					{% endblock status_msg %}
+					
+			</div>
+			
+			<div>
+					{% block extra %}
+			
+						
+					{% endblock extra %}
+					
+			</div>
+			
+			
+
+			<div class="row-fluid sortable">
+				<div class="box span9">
+					<div class="box-header well" data-original-title>
+					{% block box1_title %}
+						<h2><i class="icon-picture"></i>Blank</h2>
+					{% endblock box1_title %}
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					{% block content %}
+					{% endblock content %}	
+					</div>
+				</div><!--/span-->
+				<div class="box span3">
+					<div class="box-header well" data-original-title>
+						{% block box2_title %}
+						<h2><i class="icon-picture"></i>Blank</h2>
+					{% endblock box2_title %}
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					{% block hotissues %}
+					{% endblock hotissues %}	
+					</div>
+				</div><!--/span-->			
+			</div><!--/row-->
+<!-- content ends -->
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+		<hr>
+		<footer>
+			<p class="pull-left">L2A internship prog 2015</p>
+			<p class="pull-right">Powered by: <a href="http://www.ibm.com">IBM</a></p>
+		</footer>
+		
+	</div><!--/.fluid-container-->
+
+	<!-- external javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- jQuery -->
+	<script src="/static/js/jquery-1.7.2.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="/static/js/jquery-ui-1.8.21.custom.min.js"></script>
+	<!-- transition / effect library -->
+	<script src="/static/js/bootstrap-transition.js"></script>
+	<!-- alert enhancer library -->
+	<script src="/static/js/bootstrap-alert.js"></script>
+	<!-- modal / dialog library -->
+	<script src="/static/js/bootstrap-modal.js"></script>
+	<!-- custom dropdown library -->
+	<script src="/static/js/bootstrap-dropdown.js"></script>
+	<!-- scrolspy library -->
+	<script src="/static/js/bootstrap-scrollspy.js"></script>
+	<!-- library for creating tabs -->
+	<script src="/static/js/bootstrap-tab.js"></script>
+	<!-- library for advanced tooltip -->
+	<script src="/static/js/bootstrap-tooltip.js"></script>
+	<!-- popover effect library -->
+	<script src="/static/js/bootstrap-popover.js"></script>
+	<!-- button enhancer library -->
+	<script src="/static/js/bootstrap-button.js"></script>
+	<!-- accordion library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-collapse.js"></script>
+	<!-- carousel slideshow library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-carousel.js"></script>
+	<!-- autocomplete library -->
+	<script src="/static/js/bootstrap-typeahead.js"></script>
+	<!-- tour library -->
+	<script src="/static/js/bootstrap-tour.js"></script>
+	<!-- library for cookie management -->
+	<script src="/static/js/jquery.cookie.js"></script>
+	<!-- calander plugin -->
+	<script src='/static/js/fullcalendar.min.js'></script>
+	<!-- data table plugin -->
+	<script src='/static/js/jquery.dataTables.min.js'></script>
+
+	<!-- chart libraries start -->
+	<script src="/static/js/excanvas.js"></script>
+	<script src="/static/js/jquery.flot.min.js"></script>
+	<script src="/static/js/jquery.flot.pie.min.js"></script>
+	<script src="/static/js/jquery.flot.stack.js"></script>
+	<script src="/static/js/jquery.flot.resize.min.js"></script>
+	<!-- chart libraries end -->
+
+	<!-- select or dropdown enhancer -->
+	<script src="/static/js/jquery.chosen.min.js"></script>
+	<!-- checkbox, radio, and file input styler -->
+	<script src="/static/js/jquery.uniform.min.js"></script>
+	<!-- plugin for gallery image view -->
+	<script src="/static/js/jquery.colorbox.min.js"></script>
+	<!-- rich text editor library -->
+	<script src="/static/js/jquery.cleditor.min.js"></script>
+	<!-- notification plugin -->
+	<script src="/static/js/jquery.noty.js"></script>
+	<!-- file manager library -->
+	<script src="/static/js/jquery.elfinder.min.js"></script>
+	<!-- star rating plugin -->
+	<script src="/static/js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="/static/js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="/static/js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="/static/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	<script src="/static/js/charisma.js"></script>
+	
+	{% block script %}
+	{% endblock script %}
+		
+</body>
+</html>

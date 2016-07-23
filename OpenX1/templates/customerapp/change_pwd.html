@@ -1,0 +1,48 @@
+{% extends 'index_cust.html' %}
+
+{% block breadcrumb %}
+<a href="#">Settings</a>
+{% endblock breadcrumb %}
+
+{% block status_msg %}
+{% if messages %}
+		<div class="box-content alerts">
+			<div class="alert alert-success">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{% for message in messages %}
+    			<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    			{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock status_msg %}
+
+
+{% block box1_title %}
+<h2><i class="icon-wrench"></i> Change Password</h2>
+{% endblock box1_title %}
+
+
+{% block content %}
+	<h2> Change your Password here </h2>
+
+{% endblock content %}
+
+
+
+{% block suggestions %}
+
+{% endblock suggestions %}
+
+	
+	
+{% block box2_title %}
+<h2><i class="icon-fire"></i>Hot Issues</h2>
+{% endblock box2_title %}
+
+{% block hotissues %}
+						{% for issue in hot_issues %}
+						    <p><a href="/customer/issue/{{ issue.id }}">{{ issue.issue_description }}  | {{ issue.issue_vote }} votes</a></p>
+						
+						{% endfor %}
+					{% endblock hotissues %}

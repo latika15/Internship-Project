@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- ADD your copy rights information here
+-->
+	<meta charset="utf-8">
+	<title>Open Lagos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Open Lagos, Communication medium between user and government.">
+	<meta name="author" content="IBM">
+
+	<!-- The styles -->
+	<link href="/static/css/bootstrap-cerulean.css" rel="stylesheet">
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	</style>
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/css/charisma-app.css" rel="stylesheet">
+	<link href="/static/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+	<link href='/static/css/fullcalendar.css' rel='stylesheet'>
+	<link href='/static/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
+	<link href='/static/css/chosen.css' rel='stylesheet'>
+	<link href='/static/css/uniform.default.css' rel='stylesheet'>
+	<link href='/static/css/colorbox.css' rel='stylesheet'>
+	<link href='/static/css/jquery.cleditor.css' rel='stylesheet'>
+	<link href='/static/css/jquery.noty.css' rel='stylesheet'>
+	<link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.min.css' rel='stylesheet'>
+	<link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+	<link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+	<link href='/static/css/opa-icons.css' rel='stylesheet'>
+	<link href='/static/css/uploadify.css' rel='stylesheet'>
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- The fav icon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+		
+</head>
+
+
+<body>
+		<!-- topbar starts -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"> <span>Open Lagos</span></a>
+				
+				<!-- user dropdown starts -->
+				<div class="collapse navbar-collapse" id="navbar-collapse">        
+        		</div>
+				<!-- user dropdown ends -->
+				
+				<div class="top-nav nav-collapse">
+					<ul class="nav">
+						<li><a href="/home/login">Login</a></li>
+            			<li><a href="/home/register">Register</a></li>
+						<li><a href="#" >Open Data</a></li>
+						<li><a href="#aboutus" data-toggle="modal">About Us</a></li>
+						<li><a href="#contactus" data-toggle="modal">Contact Us</a></li>
+						<li>
+							<form class="navbar-search pull-left">
+								<input placeholder="Search" class="search-query span2" name="query" type="text">
+							</form>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<!-- topbar ends -->
+	<div class="row-fluid">
+		<div class="box-content alerts">
+			<div class="alert alert-block">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+			<font color="white" size="6">{{ broadcast_msg  }}</font>		
+    		</div>
+		</div>
+	</div>	
+						
+		<div class="row-fluid"> 
+        		<div class="span12 contain-image">	
+	     		</div>        
+        </div> 
+        
+        <!-- Modal-About Us -->
+					<div id="aboutus" class="modal fade" role="dialog">
+					  <div class="modal-dialog">
+					
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">About us</h4>
+					      </div>
+					      <div class="modal-body">
+					        <p>About us.</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					
+					  </div>
+					</div>
+					<!-- Modal-Cotact Us -->
+					<div id="contactus" class="modal fade" role="dialog">
+					  <div class="modal-dialog">
+					
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">Need support?</h4>
+					      </div>
+					      <div class="modal-body">
+					        <p>How may we help you?
+					        Need support?
+							Need help with a product you own?
+							 Ask about any HP product, service or solution. 
+							 Also, order software drivers and recovery disks, check status on orders for drivers and disks, and find product manuals.</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					
+					  </div>
+					</div>  			
+		<hr>
+		<footer>
+			<p class="pull-left">L2A internship prog 2015</p>
+			<p class="pull-right">Powered by: <a href="http://www.ibm.com">IBM</a></p>
+		</footer>
+		
+<!--/.fluid-container-->
+
+	<!-- external javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- jQuery -->
+	<script src="/static/js/jquery-1.7.2.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="/static/js/jquery-ui-1.8.21.custom.min.js"></script>
+	<!-- transition / effect library -->
+	<script src="/static/js/bootstrap-transition.js"></script>
+	<!-- alert enhancer library -->
+	<script src="/static/js/bootstrap-alert.js"></script>
+	<!-- modal / dialog library -->
+	<script src="/static/js/bootstrap-modal.js"></script>
+	<!-- custom dropdown library -->
+	<script src="/static/js/bootstrap-dropdown.js"></script>
+	<!-- scrolspy library -->
+	<script src="/static/js/bootstrap-scrollspy.js"></script>
+	<!-- library for creating tabs -->
+	<script src="/static/js/bootstrap-tab.js"></script>
+	<!-- library for advanced tooltip -->
+	<script src="/static/js/bootstrap-tooltip.js"></script>
+	<!-- popover effect library -->
+	<script src="/static/js/bootstrap-popover.js"></script>
+	<!-- button enhancer library -->
+	<script src="/static/js/bootstrap-button.js"></script>
+	<!-- accordion library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-collapse.js"></script>
+	<!-- carousel slideshow library (optional, not used in demo) -->
+	<script src="/static/js/bootstrap-carousel.js"></script>
+	<!-- autocomplete library -->
+	<script src="/static/js/bootstrap-typeahead.js"></script>
+	<!-- tour library -->
+	<script src="/static/js/bootstrap-tour.js"></script>
+	<!-- library for cookie management -->
+	<script src="/static/js/jquery.cookie.js"></script>
+	<!-- calander plugin -->
+	<script src='/static/js/fullcalendar.min.js'></script>
+	<!-- data table plugin -->
+	<script src='/static/js/jquery.dataTables.min.js'></script>
+
+	<!-- chart libraries start -->
+	<script src="/static/js/excanvas.js"></script>
+	<script src="/static/js/jquery.flot.min.js"></script>
+	<script src="/static/js/jquery.flot.pie.min.js"></script>
+	<script src="/static/js/jquery.flot.stack.js"></script>
+	<script src="/static/js/jquery.flot.resize.min.js"></script>
+	<!-- chart libraries end -->
+
+	<!-- select or dropdown enhancer -->
+	<script src="/static/js/jquery.chosen.min.js"></script>
+	<!-- checkbox, radio, and file input styler -->
+	<script src="/static/js/jquery.uniform.min.js"></script>
+	<!-- plugin for gallery image view -->
+	<script src="/static/js/jquery.colorbox.min.js"></script>
+	<!-- rich text editor library -->
+	<script src="/static/js/jquery.cleditor.min.js"></script>
+	<!-- notification plugin -->
+	<script src="/static/js/jquery.noty.js"></script>
+	<!-- file manager library -->
+	<script src="/static/js/jquery.elfinder.min.js"></script>
+	<!-- star rating plugin -->
+	<script src="/static/js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="/static/js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="/static/js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="/static/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	<script src="/static/js/charisma.js"></script>
+	
+		
+</body>
+</html>
+

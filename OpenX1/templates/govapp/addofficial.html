@@ -1,0 +1,31 @@
+{% extends 'govapp/depthead.html'%}
+
+
+{% block status_msg %}
+{% if messages %}
+        <div class="box-content alerts">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                {% for message in messages %}
+               <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+               {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock status_msg %}
+
+
+{% block box1_title %}
+<h2><i class="icon-plus"></i> Add an Official</h2>
+{% endblock box1_title %}
+
+
+{% block content %}
+
+<form method="POST" action="/gov/dept/add-official/"> {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Add Official">
+</form>
+
+
+{% endblock content %}
